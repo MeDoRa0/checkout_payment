@@ -1,5 +1,6 @@
+import 'package:checkout_payment/features/checkout/presentation/views/payment_details.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/cart_info_item.dart';
-import 'package:checkout_payment/features/checkout/presentation/views/widgets/custom_green_button.dart';
+import 'package:checkout_payment/core/widgets/custom_green_button.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/total_price_item.dart';
 import 'package:checkout_payment/images/app_images.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,8 @@ class MyCartViewBody extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          Image.asset(Assets.imagesShoppingCart),
+          //we wrap image with expanded widget to take most posiable space of screen
+          Expanded(child: Image.asset(Assets.imagesShoppingCart)),
           const SizedBox(
             height: 25,
           ),
@@ -56,12 +58,23 @@ class MyCartViewBody extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const CustomButton(
+          CustomGreenButton(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const PaymentDetailsView();
+                  },
+                ),
+              );
+            },
             customButttonText: 'Complete Payment',
           ),
+          const SizedBox(
+            height: 12,
+          )
         ],
       ),
     );
   }
 }
-
