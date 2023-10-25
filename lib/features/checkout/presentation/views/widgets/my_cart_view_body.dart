@@ -1,4 +1,5 @@
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/cart_info_item.dart';
+import 'package:checkout_payment/features/checkout/presentation/views/widgets/custom_green_button.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/total_price_item.dart';
 import 'package:checkout_payment/images/app_images.dart';
 import 'package:flutter/material.dart';
@@ -52,10 +53,15 @@ class MyCartViewBody extends StatelessWidget {
             height: 15,
           ),
           const TotalPrice(title: 'Total', value: '\$50.67'),
+          const SizedBox(
+            height: 20,
+          ),
+          const CustomButton(
+            customButttonText: 'Complete Payment',
+          ),
         ],
       ),
     );
   }
 }
-
 
