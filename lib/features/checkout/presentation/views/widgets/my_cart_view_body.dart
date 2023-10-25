@@ -1,4 +1,5 @@
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/cart_info_item.dart';
+import 'package:checkout_payment/features/checkout/presentation/views/widgets/total_price_item.dart';
 import 'package:checkout_payment/images/app_images.dart';
 import 'package:flutter/material.dart';
 
@@ -36,8 +37,25 @@ class MyCartViewBody extends StatelessWidget {
             title: 'Shipping',
             value: '\$8',
           ),
+          const SizedBox(
+            height: 15,
+          ),
+          //the line above Total and price
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: Divider(
+              thickness: 2,
+              color: Color(0xFFC6C6C6),
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          const TotalPrice(title: 'Total', value: '\$50.67'),
         ],
       ),
     );
   }
 }
+
+
