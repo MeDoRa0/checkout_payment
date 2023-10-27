@@ -5,9 +5,11 @@ class PaymentMethodItem extends StatelessWidget {
   const PaymentMethodItem({
     //make the default of isActive be false
     super.key,
-    this.isActive = false,
+    required this.isActive,
+    required this.cardImage,
   });
   final bool isActive;
+  final String cardImage;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +40,12 @@ class PaymentMethodItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15), color: Colors.white),
-        height: 24,
-        child: Center(child: SvgPicture.asset('assets/images/credit_card.svg')),
+        child: Center(
+          child: SvgPicture.asset(
+            cardImage,
+            //height: 24,
+          ),
+        ),
       ),
     );
   }

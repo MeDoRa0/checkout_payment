@@ -1,4 +1,4 @@
-import 'package:checkout_payment/features/checkout/presentation/views/widgets/payment_details_method_item.dart';
+import 'package:checkout_payment/features/checkout/presentation/views/widgets/payment_method_listview.dart';
 import 'package:flutter/material.dart';
 
 class PaymentDetailsBody extends StatelessWidget {
@@ -7,11 +7,8 @@ class PaymentDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      children: [
-        PaymentMethodItem(
-          isActive: false,
-        )
-      ],
+      children: [PaymentMethodsListView()],
     );
   }
 }
+
