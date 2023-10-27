@@ -15,7 +15,7 @@ class PaymentMethodItem extends StatelessWidget {
   Widget build(BuildContext context) {
     //AnimatedContainer to give animation to container
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 300),
       width: 103,
       height: 62,
       decoration: ShapeDecoration(
