@@ -4,9 +4,9 @@ import 'package:checkout_payment/features/checkout/presentation/views/widgets/pa
 import 'package:flutter/material.dart';
 
 class PaymentDetailsBody extends StatelessWidget {
-   PaymentDetailsBody({super.key});
-   
-   final GlobalKey<FormState> formKey = GlobalKey();
+  PaymentDetailsBody({super.key});
+
+  final GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
