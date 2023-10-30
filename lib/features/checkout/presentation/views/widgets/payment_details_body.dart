@@ -3,28 +3,48 @@ import 'package:checkout_payment/features/checkout/presentation/views/widgets/cu
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/payment_method_listview.dart';
 import 'package:flutter/material.dart';
 
-class PaymentDetailsBody extends StatelessWidget {
-  PaymentDetailsBody({super.key});
+class PaymentDetailsBody extends StatefulWidget {
+  const PaymentDetailsBody({super.key});
 
+  @override
+  State<PaymentDetailsBody> createState() => _PaymentDetailsBodyState();
+}
+
+class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
+  //this code because we use form
   final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: PaymentMethodsListView(),
         ),
         SliverToBoxAdapter(
-          child: CustomCreditCard(),
+          child: CustomCreditCard(
+            formKey: formKey,
+            autovalidateMode: autovalidateMode,
+          ),
         ),
         SliverFillRemaining(
           fillOverscroll: true,
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 12, left: 16, right: 16),
-              child: CustomGreenButton(customButttonText: 'Pay'),
+              padding: const EdgeInsets.only(bottom: 12, left: 16, right: 16),
+              child: CustomGreenButton(
+                  // to validate input when user press on button
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                  customButttonText: 'Pay'),
             ),
           ),
         )
