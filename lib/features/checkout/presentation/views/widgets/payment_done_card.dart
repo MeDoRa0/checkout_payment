@@ -3,6 +3,7 @@ import 'package:checkout_payment/features/checkout/presentation/views/widgets/pa
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/payment_done_item_info.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/total_price_item.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PaymentDoneCard extends StatelessWidget {
   const PaymentDoneCard({
@@ -65,6 +66,40 @@ class PaymentDoneCard extends StatelessWidget {
               height: 30,
             ),
             const PaymentCardInfo(),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Icon(
+                  FontAwesomeIcons.barcode,
+                  size: 64,
+                ),
+                Container(
+                  width: 113,
+                  height: 58,
+                  decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          width: 1.50, color: Color(0xFF34A853)),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'PAID',
+                      textAlign: TextAlign.center,
+                      style: Styles.style24.copyWith(
+                        color: const Color(0xFF34A853),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            //this code will put the barcode and paid below dash line in center
+            SizedBox(
+              height: ((MediaQuery.sizeOf(context).height * .2 + 20) / 2) - 29,
+            ),
           ],
         ),
       ),

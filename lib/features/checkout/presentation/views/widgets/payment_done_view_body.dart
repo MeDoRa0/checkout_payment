@@ -54,9 +54,3 @@ class PaymentDoneViewBody extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
