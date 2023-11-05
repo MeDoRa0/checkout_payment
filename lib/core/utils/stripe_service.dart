@@ -29,4 +29,9 @@ class StripeService {
       ),
     );
   }
+
+  // display payment sheet method
+  Future displayPaymentSheet() async {
+    Stripe.instance.presentPaymentSheet();
+  }
 }
