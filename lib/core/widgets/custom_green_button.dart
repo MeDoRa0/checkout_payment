@@ -2,10 +2,15 @@ import 'package:checkout_payment/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomGreenButton extends StatelessWidget {
-  const CustomGreenButton(
-      {super.key, required this.customButttonText, this.onTap});
+  const CustomGreenButton({
+    super.key,
+    required this.customButttonText,
+    this.onTap,
+    this.isLoading = false,
+  });
   final String customButttonText;
   final void Function()? onTap;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,8 @@ class CustomGreenButton extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
+          //if there is loading show loading circle , otherwise show the button text
+          child: isLoading ? const CircularProgressIndicator(): Text(
             customButttonText,
             textAlign: TextAlign.center,
             style: Styles.style22,

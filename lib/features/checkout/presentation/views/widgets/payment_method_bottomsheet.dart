@@ -1,5 +1,5 @@
 import 'package:checkout_payment/core/utils/styles.dart';
-import 'package:checkout_payment/core/widgets/custom_green_button.dart';
+import 'package:checkout_payment/features/checkout/presentation/views/widgets/custom_green_button_bloc_consumer.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/payment_method_listview.dart';
 import 'package:flutter/material.dart';
 
@@ -24,9 +24,10 @@ class PaymentMethodsBottomsheet extends StatelessWidget {
           SizedBox(
             height: 32,
           ),
-          CustomGreenButton(customButttonText: 'continue'),
+          CustomGreenButtonBlocConsumer(),
         ],
       ),
     );
   }
 }
+
