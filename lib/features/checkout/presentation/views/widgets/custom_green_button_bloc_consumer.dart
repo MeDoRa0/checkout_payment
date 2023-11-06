@@ -1,4 +1,5 @@
 import 'package:checkout_payment/core/widgets/custom_green_button.dart';
+import 'package:checkout_payment/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:checkout_payment/features/checkout/presentation/manger/payment_cubit/payment_cubit.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/payment_done_view.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,13 @@ class CustomGreenButtonBlocConsumer extends StatelessWidget {
       },
       builder: (context, state) {
         return CustomGreenButton(
+          //trigger payment cubit when press on button
+            onTap: () {
+              PaymentIntentInputModel paymentIntentInputModel =
+                  PaymentIntentInputModel(amount: '100', currency: 'USD');
+              BlocProvider.of<PaymentCubit>(context).makePayment(
+                  paymentIntentInputModel: paymentIntentInputModel);
+            },
             isLoading: state is PaymentLoading ? true : false,
             customButttonText: 'continue');
       },
