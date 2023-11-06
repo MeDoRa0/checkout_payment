@@ -1,7 +1,6 @@
-import 'package:checkout_payment/core/utils/styles.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/cart_info_item.dart';
 import 'package:checkout_payment/core/widgets/custom_green_button.dart';
-import 'package:checkout_payment/features/checkout/presentation/views/widgets/payment_method_listview.dart';
+import 'package:checkout_payment/features/checkout/presentation/views/widgets/payment_method_bottomsheet.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/total_price_item.dart';
 import 'package:checkout_payment/images/app_images.dart';
 import 'package:flutter/material.dart';
@@ -61,13 +60,6 @@ class MyCartViewBody extends StatelessWidget {
           ),
           CustomGreenButton(
             onTap: () {
-              /* Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const PaymentDetailsView();
-                  },
-                ),
-              );*/
               showModalBottomSheet(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16)),
@@ -81,34 +73,6 @@ class MyCartViewBody extends StatelessWidget {
           const SizedBox(
             height: 12,
           )
-        ],
-      ),
-    );
-  }
-}
-
-class PaymentMethodsBottomsheet extends StatelessWidget {
-  const PaymentMethodsBottomsheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            'Choose payment method',
-            style: Styles.style22,
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          PaymentMethodsListView(),
-          SizedBox(
-            height: 32,
-          ),
-          CustomGreenButton(customButttonText: 'continue'),
         ],
       ),
     );
