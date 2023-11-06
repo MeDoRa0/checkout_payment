@@ -3,14 +3,10 @@ class PaymentIntentInputModel {
   final String currency;
 
   PaymentIntentInputModel({required this.amount, required this.currency});
-  toJason()
-  {
-     return
-  {
-    'amount':amount,
-    'currency':currency,
-    
-  };
+  toJason() {
+    return {
+      'amount': '${amount}00',
+      'currency': currency,
+    };
   }
- 
 }

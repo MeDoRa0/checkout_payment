@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() {
+  //we get the key from stripe dashboard site
   Stripe.publishableKey = ApiKeys.publishableKey;
   runApp(const CheckoutApp());
 }

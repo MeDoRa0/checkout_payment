@@ -24,13 +24,14 @@ class CustomGreenButtonBlocConsumer extends StatelessWidget {
           );
         }
         if (state is PaymentFailure) {
+          Navigator.of(context).pop();
           SnackBar snackBar = SnackBar(content: Text(state.errorMessage));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       },
       builder: (context, state) {
         return CustomGreenButton(
-          //trigger payment cubit when press on button
+            //trigger payment cubit when press on button
             onTap: () {
               PaymentIntentInputModel paymentIntentInputModel =
                   PaymentIntentInputModel(amount: '100', currency: 'USD');
