@@ -24,10 +24,12 @@ class StripeService {
   }
 
 //init payment sheet method
-  Future initPaymentSheet({required String paymentIntentClientSecret}) async {
+  Future initPaymentSheet({required String paymentIntentClientSecret,required String ephemeralKeySecret}) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret: paymentIntentClientSecret,
+        customerEphemeralKeySecret: ephemeralKeySecret ,
+        customerId:'cus_Oxt0tcbGxWp7y7',
         merchantDisplayName: 'Mohamed Hossam',
       ),
     );
