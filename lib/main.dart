@@ -20,7 +20,13 @@ class CheckoutApp extends StatelessWidget {
     );
   }
 }
-
+//this steps to let user buy
 // paymentIntentObject creat payment intent (amount , currency)
 // init payment sheet(paymentIntentClientSecret)
+// presentPaymentSheet()
+//-------------------------------------
+//this steps to save use card
+// paymentintentmodel  creat payment intent (amount , currency, customerID)
+// keysecret creat ethemralkey(stripeVersion, customerID)
+//initpaymentsheet (merchentdispalyname, intentclientsecret, ephemralkeysecret)
 // presentPaymentSheet()
