@@ -1,6 +1,7 @@
 import 'package:checkout_payment/core/utils/api_keys.dart';
 import 'package:checkout_payment/core/utils/api_service.dart';
 import 'package:checkout_payment/features/checkout/data/models/ephemral_key_model/ephemral_key_model.dart';
+import 'package:checkout_payment/features/checkout/data/models/init_payment_sheet_input_model.dart';
 import 'package:checkout_payment/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:checkout_payment/features/checkout/data/models/payment_intent_model/payment_intent_model.dart';
 import 'package:dio/dio.dart';
@@ -24,12 +25,14 @@ class StripeService {
   }
 
 //init payment sheet method
-  Future initPaymentSheet({required String paymentIntentClientSecret,required String ephemeralKeySecret}) async {
+  Future initPaymentSheet(
+      {required InitPaymentSheetInputModel initPaymentSheetInputModel}) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
-        paymentIntentClientSecret: paymentIntentClientSecret,
-        customerEphemeralKeySecret: ephemeralKeySecret ,
-        customerId:'cus_Oxt0tcbGxWp7y7',
+        paymentIntentClientSecret: initPaymentSheetInputModel.clientSecret,
+        customerEphemeralKeySecret:
+            initPaymentSheetInputModel.ephemeralKeySecret,
+        customerId: initPaymentSheetInputModel.customerID,
         merchantDisplayName: 'Mohamed Hossam',
       ),
     );
@@ -44,8 +47,14 @@ class StripeService {
   Future makePayment(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     var paymentIntentModel = await creatCustomer(paymentIntentInputModel);
+    var ephemeralKeyModel =
+        await creatEphemeralKey(customerID: paymentIntentInputModel.customerID);
+    var initPaymentSheetInputModel = InitPaymentSheetInputModel(
+        clientSecret: paymentIntentModel.clientSecret!,
+        customerID: paymentIntentInputModel.customerID,
+        ephemeralKeySecret: ephemeralKeyModel.secret!);
     await initPaymentSheet(
-        paymentIntentClientSecret: paymentIntentModel.clientSecret!);
+        initPaymentSheetInputModel: initPaymentSheetInputModel);
     await displayPaymentSheet();
   }
 
