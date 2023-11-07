@@ -82,7 +82,7 @@ class StripeService {
           'customer': customerID,
         },
         contentType: Headers.formUrlEncodedContentType,
-        url: 'https://api.stripe.com/v1/payment_intents',
+        url: 'https://api.stripe.com/v1/ephemeral_keys',
         token: ApiKeys.secretKey,
         //we get headers from postman
         headers: {
