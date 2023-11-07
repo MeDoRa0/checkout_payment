@@ -1,5 +1,6 @@
 import 'package:checkout_payment/core/utils/api_keys.dart';
 import 'package:checkout_payment/core/utils/api_service.dart';
+import 'package:checkout_payment/features/checkout/data/models/ephemral_key_model/ephemral_key_model.dart';
 import 'package:checkout_payment/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:checkout_payment/features/checkout/data/models/payment_intent_model/payment_intent_model.dart';
 import 'package:dio/dio.dart';
@@ -60,4 +61,25 @@ class StripeService {
     var paymentIntentModel = PaymentIntentModel.fromJson(response.data);
     return paymentIntentModel;
   }*/
+// request that creat ephemeral key
+  Future<EphemralKeyModel> creatEphemeralKey(
+      //we did not creat model for it because it has only one parameter
+      {required String customerID}) async {
+    //request
+    var response = await apiService.post(
+        body: {
+          'customer': customerID,
+        },
+        contentType: Headers.formUrlEncodedContentType,
+        url: 'https://api.stripe.com/v1/payment_intents',
+        token: ApiKeys.secretKey,
+        //we get headers from postman
+        headers: {
+          'Authorization': "Bearer ${ApiKeys.secretKey}",
+          'Stripe-Version': '2023-10-16'
+        });
+    // recevie data
+    var ephemeralKey = EphemralKeyModel.fromJson(response.data);
+    return ephemeralKey;
+  }
 }

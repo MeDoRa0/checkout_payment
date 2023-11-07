@@ -27,6 +27,6 @@ class CheckoutApp extends StatelessWidget {
 //-------------------------------------
 //this steps to save use card
 // paymentintentmodel  creat payment intent (amount , currency, customerID)
-// keysecret creat ethemralkey(stripeVersion, customerID)
+// keysecret creat ethemralkey( customerID)
 //initpaymentsheet (merchentdispalyname, intentclientsecret, ephemralkeysecret)
 // presentPaymentSheet()
