@@ -47,7 +47,7 @@ class StripeService {
   }
 
 //creat customer method
-  Future<PaymentIntentModel> creatPaymentIntent(
+  /* Future<PaymentIntentModel> creatPaymentIntent(
       PaymentIntentInputModel paymentIntentInputModel) async {
     //request
     var response = await apiService.post(
@@ -59,5 +59,5 @@ class StripeService {
     // recevie data
     var paymentIntentModel = PaymentIntentModel.fromJson(response.data);
     return paymentIntentModel;
-  }
+  }*/
 }

@@ -34,7 +34,10 @@ class CustomGreenButtonBlocConsumer extends StatelessWidget {
             //trigger payment cubit when press on button
             onTap: () {
               PaymentIntentInputModel paymentIntentInputModel =
-                  PaymentIntentInputModel(amount: '100', currency: 'USD');
+                  PaymentIntentInputModel(
+                      amount: '100',
+                      currency: 'USD',
+                      customerID: 'cus_Oxt0tcbGxWp7y7');
               BlocProvider.of<PaymentCubit>(context).makePayment(
                   paymentIntentInputModel: paymentIntentInputModel);
             },

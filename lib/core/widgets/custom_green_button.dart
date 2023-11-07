@@ -27,11 +27,13 @@ class CustomGreenButton extends StatelessWidget {
         ),
         child: Center(
           //if there is loading show loading circle , otherwise show the button text
-          child: isLoading ? const CircularProgressIndicator(): Text(
-            customButttonText,
-            textAlign: TextAlign.center,
-            style: Styles.style22,
-          ),
+          child: isLoading
+              ? const CircularProgressIndicator()
+              : Text(
+                  customButttonText,
+                  textAlign: TextAlign.center,
+                  style: Styles.style22,
+                ),
         ),
       ),
     );
